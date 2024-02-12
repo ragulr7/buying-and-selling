@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELL-WELL</title>
+    <link rel="stylesheet" href="stylee.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our SELL-WELL</h1>
+    </header>
+
+    <main>
+        
+        <section class="product-listing">
+            <!-- Add a form for users to input their product information -->
+            <form class="sell-form" id="productForm">
+                <h2>Sell Your Product:</h2>
+                <label for="yourName">Your Name:</label>
+                <input type="text" id="yourName" name="yourName" required>
+                
+                <label for="yourPhone">Phone Number:</label>
+                <input type="tel" id="yourPhone" name="yourPhone" required>
+                
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required>
+                
+                <label for="productDescription">Product Description:</label>
+                <textarea id="productDescription" name="productDescription" required></textarea>
+                
+                <label for="productPrice">Price:</label>
+                <input type="text" id="productPrice" name="productPrice" required>
+                
+                <!-- Add a category dropdown -->
+                <label for="productCategory">Category:</label>
+                <select id="productCategory" name="productCategory" required>
+                    <option value="mobiles">Mobiles</option>
+                    <option value="bikes">Bikes</option>
+                    <option value="cars">Cars</option>
+                    <option value="clothes">Clothes</option>
+                    <!-- Add more category options as needed -->
+                </select>
+
+                <label for="productImage">Product Image:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                
+                <!-- Add an input field for purchase date -->
+                <label for="purchaseDate">Purchase Date:</label>
+                <input type="date" id="purchaseDate" name="purchaseDate" required>
+                
+                <button class="sell-button" type="submit">Sell Now</button>
+            </form>
+
+            <!-- Display the products by category -->
+            <div class="product-categories">
+                <div id="mobiles" class="category">
+                    <h2>Mobiles:</h2>
+                </div>
+                <div id="bikes" class="category">
+                    <h2>Bikes:</h2>
+                </div>
+                <div id="cars" class="category">
+                    <h2>Cars:</h2>
+                </div>
+                <div id="clothes" class="category">
+                    <h2>Clothes:</h2>
+                </div>
+                <!-- Add more category divs as needed -->
+            </div>
+        </section>
+
+        <!-- Add a logout button -->
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your SELL-WELL</p>
+    </footer>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('productForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get values from the form
+            const yourName = document.getElementById('yourName').value;
+            const yourPhone = document.getElementById('yourPhone').value;
+            const productName = document.getElementById('productName').value;
+            const productDescription = document.getElementById('productDescription').value;
+            const productPrice = document.getElementById('productPrice').value;
+            const productCategory = document.getElementById('productCategory').value;
+            const productImage = document.getElementById('productImage').files[0];
+            const purchaseDate = document.getElementById('purchaseDate').value;
+
+            // Create a new product element
+            const newProduct = document.createElement('div');
+            newProduct.className = 'product';
+            newProduct.innerHTML = `
+                <h3>Name: ${productName}</h3>
+                <p>Description: ${productDescription}</p>
+                <p>Price: ${productPrice}</p>
+                <p>Purchase Date: ${purchaseDate}</p>
+                <p>Your Name: ${yourName}</p>
+                <p>Your Phone: ${yourPhone}</p>
+                <img src="" alt="Product Image">
+            `;
+
+            // Display product image
+            const previewImage = newProduct.querySelector('img');
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(productImage);
+
+            // Append the new product to the appropriate category
+            const category = document.getElementById(productCategory);
+            category.appendChild(newProduct);
+
+            // Clear the form fields
+            document.getElementById('yourName').value = '';
+            document.getElementById('yourPhone').value = '';
+            document.getElementById('productName').value = '';
+            document.getElementById('productDescription').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productCategory').value = 'mobiles';
+            document.getElementById('productImage').value = '';
+            document.getElementById('purchaseDate').value = '';
+        });
+
+        // Function to logout and redirect to the login page
+        function logout() {
+            // Redirect to the login page (replace 'login.html' with your actual login page)
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

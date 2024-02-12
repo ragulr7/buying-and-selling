@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to SELL-WELL</h1>
+        <button class="buy-button" onclick="buyButtonClicked()">Buy</button>
+    </header>
+    <main>
+        <section class="category-selection">
+            <label for="category">Select Category:</label>
+            <select id="category" onchange="filterProducts()">
+                <option value="all">All</option>
+                <option value="mobile">Mobiles</option>
+                <option value="bike">Bikes</option>
+                <option value="car">Cars</option>
+            </select>
+        </section>
+        <section class="product-listing">
+            <article class="product mobile">
+                <img src="https://idestiny.in/wp-content/uploads/2023/06/MPU13_AV3.jpg" alt="Product 1" width="190px" height="250px">
+                <h2>Iphone 14</h2>
+                <p>Description: The iPhone 14 features a 6.1-inch (155 mm) display.</p>
+                <p>Price: 50000</p>
+                <button class="buy-button" onclick="addToCart('Iphone 14', 50000)">Add to Cart</button>
+            </article>
+            <article class="product mobile">
+                <img src="https://www.mansworldindia.com/wp-content/uploads/2023/03/POCO-X5-5G-review-Featured-Image.jpg" alt="Product 2" width="190px" height="250px">
+                <h2>POCO X5</h2>
+                <p>Description: Poco X5 is an octa-core Qualcomm Snapdragon 695 processor.</p>
+                <p>Price: 50000</p>
+                <button class="buy-button" onclick="addToCart('POCO X5', 50000)">Add to Cart</button>
+            </article>
+            <article class="product mobile">
+                <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1691050131/Croma%20Assets/Communication/Mobiles/Images/275684_weks9p.png" alt="Product 3" width="190px" height="250px">
+                <h2>One Plus Nord CE3</h2>
+                <p>Description: 6.43-inch AMOLED display with a hole punch for the selfie camera.</p>
+                <p>Price: 22000</p>
+                <button class="buy-button" onclick="addToCart('One Plus CE3', 22000)">Add to Cart</button>
+            </article>
+            <article class="product bike">
+                <img src="https://www.motorbeam.com/wp-content/uploads/2015-KTM-RC-390-Test-Ride-Review.jpg" alt="Product 4" width="190px" height="250px">
+                <h2>KTM RC 390</h2>
+                <p>Description: Power (PS): 43.5 PS @ 9000 rpm. Fuel Capacity: 13.7 l.</p>
+                <p>Price: 200000</p>
+                <button class="buy-button" onclick="addToCart('KTM RC 390', 200000)">Add to Cart</button>
+            </article>
+            <article class="product bike">
+                <img src="https://w0.peakpx.com/wallpaper/802/565/HD-wallpaper-rx100-rx100-bike-rx123-rxlove.jpg" alt="Product 5" width="190px" height="250px">
+                <h2>Yamaha RX 100</h2>
+                <p>Description: Yamaha RX100 is powered by a 98 cc engine.</p>
+                <p>Price: 100000</p>
+                <button class="buy-button" onclick="addToCart('Yamaha RX 100', 100000)">Add to Cart</button>
+            </article>
+            <article class="product bike">
+                <img src="https://www.team-bhp.com/sites/default/files/pictures2021/Rocker%20Red%20GT%20650%201.jpeg" alt="Product 6" width="190px" height="250px">
+                <h2>Royal Enfield Continental GT 650</h2>
+                <p>Description: The 648cc engine offers 47 horsepower at 7150 RPM and a maximum of 52 Nm of torque at 5250 RPM.</p>
+                <p>Price: 300000</p>
+                <button class="buy-button" onclick="addToCart('Royal Enfield Continental GT 650', 300000)">Add to Cart</button>
+            </article>
+            <article class="product car">
+                <img src="https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/29628/polo-exterior-left-front-three-quarter-6.jpeg" alt="Product 7" width="190px" height="250px">
+                <h2>Volkswagen Polo GT</h2>
+                <p>Description: 110 PS power and 175 Nm torque.</p>
+                <p>Price: 600000</p>
+                <button class="buy-button" onclick="addToCart('Volkswagen Polo GT', 600000)">Add to Cart</button>
+            </article>
+            <article class="product car">
+                <img src="https://images.news18.com/ibnlive/uploads/2017/01/2018-Model-Year-Ford-Mustang-5.0-GT.jpg" alt="Product 8" width="190px" height="250px">
+                <h2>Ford-Mustang</h2>
+                <p>Description: It gives a mileage of 7.9 kmpl.</p>
+                <p>Price: 5500000</p>
+                <button class="buy-button" onclick="addToCart('Ford-Mustang', 5500000)">Add to Cart</button>
+            </article>
+            <article class="product car">
+                <img src="https://www.drivespark.com/img/2023/06/hindustan-ambassador-modifications-cover2-1686835889.jpg" alt="Product 9" width="190px" height="250px">
+                <h2>Ambassador</h2>
+                <p>Description: Ambassador Diesel mileage is 13.5 kmpl.</p>
+                <p>Price: 500000</p>
+                <button class="buy-button" onclick="addToCart('Ambassador', 500000)">Add to Cart</button>
+            </article>
+            <!-- Add more products here -->
+        </section>
+            
+            <!-- Add more products here -->
+        
+    </main>
+    <aside class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items" class="main1">
+            <!-- Cart items will be displayed here -->
+        </ul>
+        <p>Total: <span id="cart-total">0</span></p>
+    </aside>
+    <footer>
+        <p>&copy; 2023 SELL-WELL</p>
+    </footer>
+
+    <!-- User address form (hidden initially) -->
+    <div id="address-form-container" style="display: none;">
+        <h2>Enter Your Address</h2>
+        <form id="address-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required><br>
+
+            <label for="zipcode">ZIP Code:</label>
+            <input type="text" id="zipcode" name="zipcode" required><br>
+
+            <button type="submit">Complete Purchase</button>
+        </form>
+    </div>
+
+    <script>
+        // Initialize an empty shopping cart
+        const cart = [];
+
+        // Function to add a product to the cart
+        function addToCart(productName, productPrice) {
+            const product = {
+                name: productName,
+                price: productPrice,
+            };
+
+            cart.push(product);
+
+            // Update the cart display
+            updateCartDisplay();
+        }
+
+        // Function to update the cart display
+        function updateCartDisplay() {
+            const cartItemsElement = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            // Clear existing cart items
+            cartItemsElement.innerHTML = '';
+
+            // Calculate and display the total price
+            let totalPrice = 0;
+
+            // Iterate through the cart and display each item
+            for (const product of cart) {
+                const cartItemElement = document.createElement('li');
+                cartItemElement.textContent = `${product.name} - $${product.price}`;
+                cartItemsElement.appendChild(cartItemElement);
+
+                totalPrice += product.price;
+            }
+
+            cartTotalElement.textContent = totalPrice;
+        }
+
+        // Function to filter products based on category selection
+        function filterProducts() {
+            const categorySelector = document.getElementById('category');
+            const selectedCategory = categorySelector.value;
+            const productElements = document.querySelectorAll('.product');
+
+            // Hide all products first
+            productElements.forEach((product) => {
+                product.style.display = 'none';
+            });
+
+            // Show products based on the selected category
+            if (selectedCategory === 'all') {
+                productElements.forEach((product) => {
+                    product.style.display = 'block';
+                });
+            } else {
+                const selectedCategoryElements = document.querySelectorAll(`.${selectedCategory}`);
+                selectedCategoryElements.forEach((product) => {
+                    product.style.display = 'block';
+                });
+            }
+        }
+
+        // Function to handle the Buy button click
+        function buyButtonClicked() {
+            if (cart.length > 0) {
+                // Show the user address form
+                document.getElementById('address-form-container').style.display = 'block';
+            } else {
+                alert('Your cart is empty. Add items to your cart before proceeding.');
+            }
+        }
+
+        // Function to handle the address form submission
+        function completePurchase() {
+            // Retrieve user address from the form
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const zipcode = document.getElementById('zipcode').value;
+
+            // Check if the address is provided before proceeding with checkout
+            if (!name || !address || !city || !zipcode) {
+                alert('Please provide a complete address for delivery.');
+                return;
+            }
+
+            // Here, you can use the user's address for processing the order.
+
+            // Clear the cart after the purchase
+            cart.length = 0;
+            
+            // Update the cart display
+            updateCartDisplay();
+
+            // Hide the address form
+            document.getElementById('address-form-container').style.display = 'none';
+
+            alert('Thank you for your purchase! Your order will be delivered to:\n' +
+                `Name: ${name}\n` +
+                `Address: ${address}\n` +
+                `City: ${city}\n` +
+                `ZIP Code: ${zipcode}`);
+        }
+
+        // Handle form submission to prevent page reload
+        const addressForm = document.getElementById('address-form');
+        addressForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            completePurchase();
+        });
+    </script>
+</body>
+</html>

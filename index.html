@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy or Sell</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file if needed -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our SELL-WELL</h1>
+    </header>
+
+    <main>
+        <br><br><br><br><br><br><br><br><br><br>
+        <section class="category-selection" style="display: none;">
+            <h2>Select an Option:</h2>
+            <form action="#" method="post" id="category-form">
+                <label>
+                    <input type="radio" name="category" value="buy" required>
+                    Buy
+                </label>
+                <label>
+                    <input type="radio" name="category" value="sell" required>
+                    Sell
+                </label>
+                <button type="submit">Continue</button>
+            </form>
+        </section>
+
+        <section class="login-section">
+            <h2>Login</h2>
+            <form onsubmit="return validate();" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function validate() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if the username and password are valid
+            if (username === "Ragul" && password === "ragulr7") {
+                // If valid, show the category selection section and hide the login section
+                document.querySelector(".category-selection").style.display = "block";
+                document.querySelector(".login-section").style.display = "none";
+            } else {
+                // If invalid, show an error message
+                alert("Invalid username or password!");
+            }
+
+            // Prevent the form from submitting normally
+            return false;
+        }
+
+        // Add event listener to the category selection form
+        document.getElementById("category-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+
+            if (selectedCategory === 'buy') {
+                window.location.href = 'buy.html'; // Redirect to the buy page
+            } else if (selectedCategory === 'sell') {
+                window.location.href = 'sell.html'; // Redirect to the sell page
+            }
+        });
+    </script><br><br><br><br><br>
+    
+    <footer>
+        <p>&copy; 2023 Your Online Marketplace</p>
+    </footer>
+</body>
+</html>
